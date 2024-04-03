@@ -28,7 +28,7 @@ void usage() {
 	printf("sample: send-arp-test wlan0\n");
 }
 
-//Reference : https://pencil1031.tistory.com/66
+//https://pencil1031.tistory.com/66
 
 int getIPAddress(uint32_t *ip_addr, char* dev) {
 	int sock;
@@ -71,7 +71,7 @@ int getMacAddress(uint8_t *mac, char* dev) {
 
 int f(pcap_t* handle, EthArpPacket *packet, Mac mac, uint32_t ip, uint32_t ip_a, Mac* mac_a){
 	//make packet
-	packet->eth_.dmac_ = Mac("FF:FF:FF:FF:FFFF");
+	packet->eth_.dmac_ = Mac("FF:FF:FF:FF:FF:FF");
 	packet->eth_.smac_ = mac;
 	packet->eth_.type_ = htons(EthHdr::Arp);
 	packet->arp_.hrd_ = htons(ArpHdr::ETHER);
