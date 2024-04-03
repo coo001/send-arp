@@ -119,11 +119,7 @@ void send_arp(pcap_t* handle, EthArpPacket *packet, Mac dmac, Mac smac, uint32_t
 }
 
 int main(int argc, char* argv[]) {
-	if (argc != 2) {
-		usage();
-		return -1;
-	}
-
+	
 	char* dev = argv[1];
 	char errbuf[PCAP_ERRBUF_SIZE];
 	pcap_t* handle = pcap_open_live(dev, BUFSIZ, 1, 1, errbuf);
