@@ -99,7 +99,6 @@ int f(pcap_t* handle, EthArpPacket *packet, Mac mac, uint32_t ip, uint32_t ip_a,
 		*mac_a = Mac(packet_a->arp_.smac_); 
 		break;
 	}	
-	return 1;
 }
 
 void send_arp(pcap_t* handle, EthArpPacket *packet, Mac dmac, Mac smac, uint32_t sip, uint32_t tip){
@@ -146,8 +145,8 @@ int main(int argc, char* argv[]) {
 	while(1){
 		printf("1");
 		ip_send = Ip((argv[i])); ip_targ=Ip((argv[i+1]));
-		if(f(handle, &packet, mac, ip, ip_targ, &mac_targ)==0) return 0;
-		if(f(handle, &packet, mac, ip, ip_send, &mac_send)==0) return 0;
+		f(handle, &packet, mac, ip, ip_targ, &mac_targ);
+		f(handle, &packet, mac, ip, ip_send, &mac_send);
 		send_arp(handle, &packet, mac_send, mac, ip_send, ip_targ);
 		i+=2;
 		if(i+2>=argc) break;
